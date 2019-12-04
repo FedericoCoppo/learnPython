@@ -14,7 +14,7 @@ def find_enable_label(labelString, enableList):
 	for i in range(0, len(enableList)):  
 		if enableList[i] == labelString:
 			found = True
-			print("trovato", labelString)
+			print("found", labelString)
 	
 	return found
 		
