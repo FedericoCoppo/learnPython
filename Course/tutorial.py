@@ -1,6 +1,6 @@
 #
 # author: F. Coppo
-# decription: python fast basic course
+# description: python fast basic course
 #
 
 """
