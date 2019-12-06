@@ -66,6 +66,13 @@ for x in mylist:		# list can be iterated
    	print(mylist*2)     # print the list using operator (duplication) with list
 a = object()			# return an empty object
 aList = [a] * 10 		# aList contains 10 instance of a 
+B=["a","b","c"]
+print(B[1:])   			# from index 1 to the end b,c 
+del(B[1]) 				# cancel "b"
+print(B[1:]) 			# element 1 has become 'c'
+l = "Joe Black".split() # split string/group of char into a list
+print(l)
+# you can also split on specific character (delimiter) for example -> "A,B,C".split(',')
 
 """
 	LIST COMPREHENSIONS
