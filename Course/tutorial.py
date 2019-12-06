@@ -1,6 +1,6 @@
 #
 # author: F. Coppo
-# decription: python fast basic course
+# description: python fast basic course
 #
 
 import sys
@@ -8,10 +8,6 @@ print(sys.version)
 
 """
  VARIABLE TYPE
- 	- variable name is implemented as object reference; 
- 	- redefine variable (a = 2...then...a = 4) means assign reference to new obj and leave
-	  last obj with one less reference (reference count)
-	- once reference count of an obj become zero, the garbage collector system remove the obj  
 """
 print("***************")
 print("VARIABLE TYPE")
@@ -24,6 +20,8 @@ if isinstance(floatC, float) and floatC == 7.0 :  # check the variable type usin
 	print("Float", floatC)
 
 print(sys.float_info) # system settings about float type
+print(int(1.1)) 	  # casting example with truncation
+print(float('1.2'))   # conversion
 
 """
  STRING
@@ -37,10 +35,14 @@ print("String:") 		# both single or double quotes is allowed
 name = 'my name is '
 name += 'FC'            # NOTE: operators between numbers and strings is not supported
 print(name)
-name = 'FC'
+name = 'FEDERICO'
+name.find("FEDE")       # first index of the sub-string 
 print("my name is %s" % name)
 print("lengh of my name is %s" % len(name))
 print("the index of surname is %d" % name.index('C'))
+print(name[::2]) 	# slice even caracter
+print(name[0:5:2])	# get every second element in the range from index 0 to index 4
+print(name.replace('FEDE', 'ULDE')) # replace string chunks
 
 """
 	LIST 
@@ -50,7 +52,6 @@ print("the index of surname is %d" % name.index('C'))
 	- list can be changed
 	- list of list are allowed
 	- some method: append(x), remove(x), pop(i), index(), count()
-	
 """
 print("***************")
 print("LIST")
@@ -100,9 +101,11 @@ print(a.union(b))				# {'John', 'Jake', 'Jill'}
 print("***************")
 print("TUPLE")
 print("***************")
-tup = 113, 911, "help"  # (113, 911, 'help')
-print(tup)
-print(tup[1])
+tup1 = 113, 911, "help" # (113, 911, 'help')
+print(tup1)
+print(tup1[1])
+tup2 = tup1 + ( 118, 119, "fire")
+print(tup2)			    # tuple concatenation
 
 """
 	The "IN" operator: it should be used to check if a specified object exists within an iterable object container (i.e list)
