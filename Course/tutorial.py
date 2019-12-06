@@ -1,6 +1,6 @@
 #
 # author: F. Coppo
-# description: python fast basic course
+# decription: python fast basic course
 #
 
 """
@@ -18,6 +18,7 @@ if isinstance(floatC, float) and floatC == 7.0 :  # check the variable type usin
 
 """
  STRING
+	- cannot be changed
 """
 print("***************")
 print("STRING")
@@ -33,14 +34,20 @@ print("lengh of my name is %s" % len(name))
 print("the index of surname is %d" % name.index('C'))
 
 """
-	LIST: a list is created by placing all the items (elements) inside a square bracket [ ], separated by commas;
-	it can have any number of items and they may be of different types a list can even have another list as an item
+	LIST 
+	- a list is created by placing all the items (elements) inside a square bracket [ ], separated by commas (a = [’spam’, ’eggs’, 100, 1234])
+	- it can have any number of items and they may be of different types a list can even have another list as an item
+	- index start from zero, 
+	- list can be changed
+	- list of list are allowed
+	- some method: append(x), remove(x), pop(i), index(), count()
+	
 """
 print("***************")
 print("LIST")
 print("***************")
 mylist = []				# list declaration
-mylist.append(9.2)		# 'append' is method to add single item to the endo of the list
+mylist.append(9.2)		# append is list obj method to add single item to the end of the list
 mylist.append(3**2)		# 3^2
 mylist.append("Third element")
 print("length of mylist is %s" % len(mylist))
@@ -78,6 +85,17 @@ print(a.symmetric_difference(b))# {'Jill', 'Jake'}
 print(a.union(b))				# {'John', 'Jake', 'Jill'}
 
 """
+	TUPLE
+	like list but not mutable -> tup[1] = tup[2] is forbidden
+"""
+print("***************")
+print("TUPLE")
+print("***************")
+tup = 113, 911, "help"  # (113, 911, 'help')
+print(tup)
+print(tup[1])
+
+"""
 	The "IN" operator: it should be used to check if a specified object exists within an iterable object container (i.e list)
 """
 print("***************")
@@ -95,7 +113,7 @@ print("***************")
 print("LOOPS")
 print("***************")
 # for
-for x in range(5, 7):
+for x in range(5, 7): # range build in function create arithmetic progression list:  range 4 -> [0, 1, 2, 3]
     print(x)  # 5 6
 	
 num = [1,2,5,6,89,7] 
@@ -196,14 +214,20 @@ myCar.runEngine(True)
 myCar.runEngine(False)
 
 """
- DICTIONARY: key instead of index (can be of any type of object (a string, a number, a list);
- dictionary is collection of key-value pairs: is an associative array:
+ DICTIONARY: 
+	- key instead of index (can be of any type of object (a string, a number, a list);
+	dictionary is collection of key-value pairs: is an associative array.
+	- list cannot be key since key should be not mutable
+dictionary syntax:
 
 	d = {
     <key1>: <value1>,
       .
     <keyN>: <valueN>
-}
+		}
+		
+	OR using dict constructor
+	d = dict([(’Bob’, 4), (’Paul’, 42), (’Jack’, 18)])	
 """
 print("***************")
 print("DICTIONARY")
@@ -222,6 +246,7 @@ myLeague.pop("Monaco")						  # clear member
 myLeague.update(Turin = ["Juventus FC", 501, 14]) # update member
 for city, teamData in myLeague.items(): # iteration
     print("city %s has following team %s" % (city, teamData))
+print("list of keys: %s" % myLeague.keys()) # keys list
 
 """
 	MODULE
@@ -379,7 +404,7 @@ print("SERIALIZATION with JSON")
 print("***************")
 import json
 
-myLeague['Roma'] = ["Lazio",370,10] # update dictionary
+myLeague['Rome'] = ["Lazio",370,10] # update dictionary
 
 # .LOADS -> from json to python
 x =  '{ "team":"Barcellona", "foundation":1970, "nation":"Spain"}'
@@ -389,3 +414,46 @@ print(y["nation"])
 # .DUMPS -> from python to json
 y = json.dumps(myLeague)  # convert into JSO string
 print(y)
+
+"""
+	DECORATORS
+	- It allows programmers to modify the behavior of function or class
+	- It allow us to wrap another function in order to extend the behavior of wrapped function, without permanently modifying it
+	- It is just another function which takes a functions and returns one
+"""  
+print("***************")
+print("DECORATORS")
+print("***************")
+def decoratorFunc(msg):
+    def mainFunc():
+        print(msg)
+    return mainFunc
+hi = decoratorFunc("hi!")
+hi()
+
+"""
+	MAP function: map(func, *iterables)
+	- return map object (generator obj)
+	- list(map(func, *iterables)) to get return a list
+	- the number of arguments to func must be the number of iterables listed
+	- func is the function on which each element in iterables would be applied on.
+	- * means "as many iterables as possible"
+"""  
+print("***************")
+print("MAP")
+print("***************")
+
+# without map change nome from lower case to upper case
+myTeam = ['jhon', 'jack', 'bob']
+MyTeam = []
+for name in myTeam:
+	MyTeam.append(name.upper())
+print(MyTeam)
+
+# with map
+MyTeamMap = set(map(str.upper, myTeam)) # list(map(str.upper, myTeam)) but list does not work !
+print(MyTeamMap)
+
+# filter
+def f(x): return x % 2 != 0 and x % 3 != 0
+print(set(filter(f, range(2, 25))))
