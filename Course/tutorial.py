@@ -23,6 +23,8 @@ floatC = float(7) 		# floatC = 7.0
 if isinstance(floatC, float) and floatC == 7.0 :  # check the variable type using isinstance method
 	print("Float", floatC)
 
+print(sys.float_info) # system settings about float type
+
 """
  STRING
 	- cannot be changed
