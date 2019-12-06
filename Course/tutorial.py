@@ -74,6 +74,17 @@ l = "Joe Black".split() # split string/group of char into a list
 print(l)
 # you can also split on specific character (delimiter) for example -> "A,B,C".split(',')
 
+# EXAMPLE OF LIST SIDE EFFECT!
+A = ["joe", 46] # A is reference to list 
+B = A			# B is reference to same list
+A[0] = "Bob"    # changing 1st element of the list
+print(A)
+print(B)		# also list B is affected
+C = A[:]        #using a clone instead C list is not changed because is a a different struct 
+A[0] = "Nancy"
+print(A)
+print(C)
+		
 """
 	LIST COMPREHENSIONS
 	square braket with expression or loops
