@@ -3,6 +3,9 @@
 # decription: python fast basic course
 #
 
+import sys
+print(sys.version)
+
 """
  VARIABLE TYPE
  	- variable name is implemented as object reference; 
