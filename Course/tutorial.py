@@ -5,6 +5,10 @@
 
 """
  VARIABLE TYPE
+ 	- variable name is implemented as object reference; 
+ 	- redefine variable (a = 2...then...a = 4) means assign reference to new obj and leave
+	  last obj with one less reference (reference count)
+	- once reference count of an obj become zero, the garbage collector system remove the obj  
 """
 print("***************")
 print("VARIABLE TYPE")
