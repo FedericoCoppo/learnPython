@@ -226,7 +226,7 @@ print("***************")
 print("CLASSES and OBJECT")
 print("***************")
 class Car:
-	def __init__(car, license):       # car is like this pointer in C++
+	def __init__(car, license):       # CONSTRUCTOR; car is like this pointer in C++, usually car is named "self"
 		car.__license_plate = license # ___ is for private, _ is for protected
 		print("car with license plate: %s has been created" % car.__license_plate)
 	__engineOn = False
