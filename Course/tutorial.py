@@ -23,6 +23,12 @@ print(sys.float_info) # system settings about float type
 print(int(1.1)) 	  # casting example with truncation
 print(float('1.2'))   # conversion
 
+global label 		  # global scope
+def ff():
+	print(label)
+label = 2
+ff()
+
 """
  STRING
 	- cannot be changed
@@ -45,11 +51,11 @@ print(name[0:5:2])	# get every second element in the range from index 0 to index
 print(name.replace('FEDE', 'ULDE')) # replace string chunks
 
 """
-	LIST 
+	LIST  []
 	- a list is created by placing all the items (elements) inside a square bracket [ ], separated by commas (a = [’spam’, ’eggs’, 100, 1234])
 	- it can have any number of items and they may be of different types a list can even have another list as an item
 	- index start from zero, 
-	- list can be changed
+	- list can be changed (mutable)
 	- list of list are allowed
 	- some method: append(x), remove(x), pop(i), index(), count()
 """
@@ -57,9 +63,10 @@ print("***************")
 print("LIST")
 print("***************")
 mylist = []				# list declaration
-mylist.append(9.2)		# append is list obj method to add single item to the end of the list
+mylist.append(9.2)		# append is list obj method to add single item to the end of the list, to add more elements the method is "extend"  
 mylist.append(3**2)		# 3^2
-mylist.append("Third element")
+mylist.append(["Third element" , "Third element_0.1" ]) # add single element as nested list .
+
 print("length of mylist is %s" % len(mylist))
 print(mylist[1]) 		# print first element
 for x in mylist:		# list can be iterated
@@ -99,21 +106,26 @@ newlist = [n for n in num if n > 30]          # print only  number grater than 3
 print(newlist)
 
 """
-	SETS
-	list with no duplicate entries
+	SETS {}
+	- list with no duplicate entries 
+	- unordered (do not record element position)
 """
 print("***************")
 print("SETS")
 print("***************")
-a = set(["Jake", "John", "Jake"])
+a = set(["Jake", "John", "Jake"]) # convert a list in to a set 
 b = set(["John", "Jill"])
 print(a)     					# {'John', 'Jake'}
-print(a.intersection(b))		# {'John'}
+print(a.intersection(b))		# {'John'}  
+print(a & b)					# a.intersection(b) same as a & b  
 print(a.symmetric_difference(b))# {'Jill', 'Jake'}
 print(a.union(b))				# {'John', 'Jake', 'Jill'}
+a.add("Bob")				    # add element; a.remove("Bob") to remove element
+flagBobIn = "Bob" in a 				        # verify if the element is in the set
+print(flagBobIn)
 
 """
-	TUPLE
+	TUPLE ()
 	like list but not mutable -> tup[1] = tup[2] is forbidden
 """
 print("***************")
@@ -137,13 +149,28 @@ if label in mylist:
     print("found %s in following list %s" % (label, mylist))
 
 """
+	CONDITION
+"""
+"""
+	 if (a or b): 
+		...
+	 elif (c and b): 
+		...
+	 else:
+		...
+	 
+	if not (a == b):
+		...
+ """
+
+"""
 	LOOPS
 """
 print("***************")
 print("LOOPS")
 print("***************")
 # for
-for x in range(5, 7): # range build in function create arithmetic progression list:  range 4 -> [0, 1, 2, 3]
+for x in range(5, 7): # the "range" build in function create arithmetic progression list:  range 4 -> [0, 1, 2, 3]
     print(x)  # 5 6
 	
 num = [1,2,5,6,89,7] 
@@ -176,9 +203,14 @@ else:                             # you can use else into while loop!
 print("***************")
 print("FUNCTION")
 print("***************")
-def summer(a, b):
+def summer(a = 1, b = 1): # default argument
+    """
+    this is function documentation called with -> help(summer)
+    """
     return a + b
+help(summer)
 print("sum result is %d" % summer(4,5))
+print("sum default result is %d" % summer())
 
 # multiple function argument
 def functionVariadic(a, b, * theRest):
@@ -219,6 +251,7 @@ def mainFunction(a, b):
 	
 mainFunction(1, 2)
 
+
 """
  CLASSES AND OBJECT
 """     
@@ -243,11 +276,34 @@ myCar.runEngine(True)        # obj method calling
 myCar.runEngine(True)
 myCar.runEngine(False)
 
+# class Circle
+import matplotlib.pyplot as plt
+
+class Circle(object):
+    def __init__(self, radius=3, color='blue'):     # Constructor
+        self.radius = radius
+        self.color = color 
+		
+    # Method
+    def add_radius(self, r):
+        self.radius = self.radius + r
+        return(self.radius)
+    
+    # Method
+    def drawCircle(self):
+        plt.gca().add_patch(plt.Circle((0, 0), radius=self.radius, fc=self.color)) # matplotlib "Circle" is not the "Circle" obj 
+        plt.axis('scaled')
+        plt.show() 
+
+RedCircle = Circle(10, 'red') # create an object RedCircle
+RedCircle.drawCircle()
+
 """
- DICTIONARY: 
-	- key instead of index (can be of any type of object (a string, a number, a list);
-	dictionary is collection of key-value pairs: is an associative array.
+ DICTIONARY: {}
+	- key instead of index
+	- dictionary is collection of key-value pairs: is an associative array.
 	- list cannot be key since key should be not mutable
+	-  keys can only be strings, numbers, or tuples,
 dictionary syntax:
 
 	d = {
@@ -271,12 +327,14 @@ myLeague = {
 	"Paris": ["PSG", 			680,  10]
 		   }
 
-myLeague.update( {'Milano' : ["Milan",470,17]} ) # add a member
-myLeague.pop("Monaco")						  # clear member
+myLeague.update( {'Milano' : ["Milan",470,17]} )  # add a member
+myLeague.pop("Monaco")						  	  # clear member: also del(myLeague('Monaco')) 
 myLeague.update(Turin = ["Juventus FC", 501, 14]) # update member
 for city, teamData in myLeague.items(): # iteration
     print("city %s has following team %s" % (city, teamData))
 print("list of keys: %s" % myLeague.keys()) # keys list
+
+'Turin' in myLeague # verify the key is in the dictionary
 
 """
 	MODULE
