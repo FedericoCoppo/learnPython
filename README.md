@@ -5,4 +5,7 @@ script that allow plot data from excel using matplotlib
 
 ## Folder
   ### Course
-  it contains script that help python syntax/data struct learning
+  it contains scripts that help python learning on:
+    - syntax
+    - data struct
+    - file management
