@@ -66,9 +66,10 @@ df.columns = headers
 
 -> datatypes:
 print(df.dtypes)
+
+->  get a statistical summary of each column:
+df[['length', 'compression-ratio']].describe()
 """
-
-
 
 """
  NUMPY ARRAY: library for scientific computing
