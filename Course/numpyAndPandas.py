@@ -59,6 +59,16 @@ for example if 'a' is weight, you have only sample grater thank 30 kilos
 
 df2.to_csv('new_cvs.cvs') # save the new dataset into csv file
 
+"""
+-> to add header:
+headers = ["fuel-type","aspiration", "num-of-doors","body-style"]
+df.columns = headers
+
+-> datatypes:
+print(df.dtypes)
+"""
+
+
 
 """
  NUMPY ARRAY: library for scientific computing
