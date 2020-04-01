@@ -1,9 +1,13 @@
 # learnPython
 
-## plotExcel.py
+```
+plotExcel.py
+```
 script that allow plot data from excel using matplotlib
 
-## deleteColumn.py
+```
+deleteColumn.py
+```
 script that allow deleting specific column of different sheet in Excel file
 
 ## Folder
