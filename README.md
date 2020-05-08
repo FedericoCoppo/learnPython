@@ -10,6 +10,11 @@ deleteColumn.py
 ```
 script that allow deleting specific column of different sheet in Excel file
 
+```
+filterExcel.py
+```
+script that allow filtering (under-sampling the rows) big data excel files
+
 ## Folder
   ### Course
   it contains scripts that help python learning on:
