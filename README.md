@@ -18,9 +18,7 @@ script that allow filtering (under-sampling the rows) big data excel files
 ```
 comuneSave.py
 ```
-script delivered for Educare that allows the log in on the platform of the municipality of Turin and allows the automatic entry of personal 
-
-data provided by municipality of Turin (extracted from Excel) for the release of food parcels for families in difficulty during Covid period.
+script delivered for Educare that allows the log in on the platform of the municipality of Turin and allows the automatic entry of personal data provided by municipality of Turin (extracted from Excel) for the release of food parcels for families in difficulty during Covid period.
 
 ## Folder
   ### Course
